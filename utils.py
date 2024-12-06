@@ -85,35 +85,6 @@ mutation createShipping($input: ShippingZoneCreateInput!) {
     shippingZone {
       id
       name
-      description
-      warehouses {
-        name
-        id
-        shippingZones(first: 10) {
-          edges {
-            node {
-              id
-              countries {
-                code
-              }
-            }
-          }
-        }
-        slug
-      }
-      channels {
-        id
-        countries {
-          code
-        }
-      }
-      countries {
-        code
-        country
-      }
-      shippingMethods {
-        id
-      }
     }
   }
 }
@@ -133,20 +104,6 @@ mutation CreateShippingRate($input: ShippingPriceInput!) {
     }
     shippingMethod {
       id
-      channelListings {
-        maximumOrderPrice {
-          amount
-        }
-        minimumOrderPrice {
-          amount
-        }
-        price {
-          amount
-        }
-        channel {
-          id
-        }
-      }
     }
   }
 }
@@ -405,6 +362,30 @@ mutation ChannelDelete($id: ID!) {
     errors {
       code
       field
+      message
+    }
+  }
+}
+"""
+
+SHIPPING_ZONE_DELETE_MUTATION = """
+mutation DeleteShippingZone($id: ID!) {
+  shippingZoneDelete(id: $id) {
+    errors {
+      code
+      field
+      message
+    }
+  }
+}
+"""
+
+SHIPPING_PRICE_DELETE_MUTATION = """
+mutation DeleteShippingRate($id: ID!) {
+  shippingPriceDelete(id: $id) {
+    errors {
+      field
+      code
       message
     }
   }
