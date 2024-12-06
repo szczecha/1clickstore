@@ -22,7 +22,7 @@ class StoreSetup:
         """
         Create a new warehouse with the specified input data.
         """
-        variables = {"input": input_data}
+        variables = input_data
 
         result = self.api_client.execute_query_with_retries(
             WAREHOUSE_CREATE_MUTATION, variables
@@ -42,7 +42,7 @@ class StoreSetup:
         """
         Create a new channel with the specified input data.
         """
-        variables = {"input": input_data}
+        variables = input_data
 
         result = self.api_client.execute_query_with_retries(
             CHANNEL_CREATE_MUTATION, variables
@@ -60,7 +60,7 @@ class StoreSetup:
         """
         Create a new shipping zone with the specified input data.
         """
-        variables = {"input": input_data}
+        variables = input_data
 
         result = self.api_client.execute_query_with_retries(
             SHIPPING_ZONE_CREATE_MUTATION, variables
